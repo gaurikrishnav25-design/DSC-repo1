@@ -35,6 +35,13 @@ The goal of this assignment is to build a Python algorithm (using basic scientif
 5) #### Discuss which nodes stay central and how community structure shapes these metrics.
 
 
+## Conclusion
+
+Using Newman’s spectral modularity maximization algorithm on Zachary's Karate Club network ($n = 34$, $m = 78$), the network naturally partitions into **4 distinct communities** with a maximum global modularity score of **$Q = 0.3934$**:
+
+* **Optimal Community Structure:** The first bisection divides the club into two primary factions ($16$ and $18$ nodes, $Q = 0.3715$), capturing the historical split around the instructor (Node 0) and the administrator (Node 33). A second recursive split refines these into four tighter subgroups ($7, 9, 12,$ and $6$ nodes), increasing modularity to $Q = 0.3934$, after which no further split yields a positive modularity gain ($\Delta Q \le 0$).
+* **Decline in Global Centrality:** As inter-community edges are removed across iterations, **degree, betweenness, and closeness centralities drop sharply** for nearly all nodes. Hub nodes such as **Node 0** (degree centrality $0.4848 \rightarrow 0.1515$; betweenness $0.4376 \rightarrow 0.0107$) and **Node 33** (degree centrality $0.5152 \rightarrow 0.3333$; betweenness $0.3041 \rightarrow 0.0587$) lose their global bridging roles once cross-group links are severed.
+* **Preservation of Local Cohesion:** Unlike global centrality measures, the **local clustering coefficient remains high or increases** for most nodes across splits (e.g., Node 0 rises from $0.1500$ to $0.4000$, and Node 33 rises from $0.1103$ to $0.1818$). This confirms that spectral bisection effectively isolates densely connected local triangles while cutting sparse bridges between communities.
 
 
 
